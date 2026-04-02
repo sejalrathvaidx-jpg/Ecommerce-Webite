@@ -42,7 +42,7 @@ export default function ProductDetails() {
             <p className="product-detail-price">${product.price}</p>
             <p className="product-detail-description">{product.description}</p>
             <button
-              className="btn btn-primary"
+              className="btn banner-btn"
               onClick={() => addToCart(product.id)}
             >
               Add to Cart {productQuantityLabel}

@@ -44,7 +44,7 @@ body {
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  color: #145c45;
   text-decoration: none;
 }
 
@@ -62,7 +62,7 @@ body {
 }
 
 .navbar-link:hover {
-  color: #007bff;
+  color: #145c45;
 }
 
 .navbar-auth {
@@ -79,7 +79,7 @@ body {
 
 .navbar-greeting {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .navbar-auth-links {
@@ -525,4 +525,66 @@ body {
   .checkout-item-controls {
     align-items: flex-start;
   }
+}
+
+
+
+/*banner css
+*/
+.home-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5e9df;
+  padding: 0px 60px;
+  border-radius: 10px;
+  /* margin: 20px; */
+}
+
+.banner-content {
+  max-width: 50%;
+}
+
+.banner-content h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0f3d2e;
+  margin-bottom: 20px;
+}
+
+.banner-btn {
+  background-color: #0f3d2e;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.banner-btn:hover {
+  background-color: #145c45;
+}
+
+.banner-image img {
+  width: 300px;
+  object-fit: contain;
+}
+.transparent-btn {
+  background-color: #0f3d2e00;
+  color: rgb(3, 2, 2);
+  padding: 12px 24px;
+  border: 1px solid #333;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.transparent-btn:hover {
+  background-color: #145c45;
+  color: rgb(255, 252, 252);
+  border: none;
+}
+.product-card-link {
+  text-decoration: none;
+  color: inherit;
 }

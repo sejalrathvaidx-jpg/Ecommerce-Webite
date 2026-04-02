@@ -18,20 +18,20 @@ export default function Auth() {
   } = useForm();
 
   function onSubmit(data) {
-    setError(null);
-    let result;
-    if (mode === "signup") {
-      result = signUp(data.email, data.password);
-    } else {
-      result = login(data.email, data.password);
-    }
-
-    if (result.success) {
-      navigate("/");
-    } else {
-      setError(result.error);
-    }
+  setError(null);
+  let result;
+  if (mode === "signup") {
+    result = signUp(data.name, data.email, data.password);
+  } else {
+    result = login(data.email, data.password);
   }
+
+  if (result.success) {
+    navigate("/");
+  } else {
+    setError(result.error);
+  }
+}
 
   return (
     <div className="page">
@@ -42,6 +42,22 @@ export default function Auth() {
           </h1>
           <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
             {error && <div className="error-message">{error}</div>}
+            {mode === "signup" && (
+              <div className="form-group">
+                <label className="form-label" htmlFor="name">
+                  Name
+                </label>
+                <input
+                  className="form-input"
+                  type="text"
+                  id="name"
+                  {...register("name", { required: "Name is required" })}
+                />
+                {errors.name && (
+                  <span className="form-error">{errors.name.message}</span>
+                )}
+              </div>
+            )}
             <div className="form-group">
               <label className="form-label" htmlFor="email">
                 Email

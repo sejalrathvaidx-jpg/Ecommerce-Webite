@@ -81,7 +81,7 @@ export default function Checkout() {
               </p>
             </div>
             <button
-              className="btn btn-primary btn-large btn-block"
+              className="btn banner-btn btn-large btn-block"
               onClick={placeOrder}
             >
               Place Order

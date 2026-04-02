@@ -3,24 +3,28 @@ import { createContext, useState, useContext } from "react";
 const AuthContext = createContext(null);
 
 export default function AuthProvider({ children }) {
-  const [user, setUser] = useState(
-    localStorage.getItem("currentUserEmail")
-      ? { email: localStorage.getItem("currentUserEmail") }
-      : null
-  );
+  const [user, setUser] = useState(() => {
+    const email = localStorage.getItem("currentUserEmail");
+    if (!email) return null;
 
-  function signUp(email, password) {
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const foundUser = users.find((u) => u.email === email);
+
+    return foundUser ? { name: foundUser.name, email: foundUser.email } : null;
+  });
+
+  function signUp(name, email, password) {
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
     if (users.find((u) => u.email === email)) {
       return { success: false, error: "Email already exists" };
     }
-    const newUser = { email, password };
+    const newUser = { name, email, password };
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
     localStorage.setItem("currentUserEmail", email);
 
-    setUser({ email });
+    setUser({ name, email });
 
     return { success: true };
   }
@@ -28,7 +32,7 @@ export default function AuthProvider({ children }) {
   function login(email, password) {
     const users = JSON.parse(localStorage.getItem("users") || "[]");
     const user = users.find(
-      (u) => u.email === email && u.password === password
+      (u) => u.email === email && u.password === password,
     );
 
     if (!user) {
